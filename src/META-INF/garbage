@@ -1,0 +1,61 @@
+scrollPane.addMouseMotionListener(new MouseAdapter() {
+                public void mouseMoved(MouseEvent e) {
+                    if (e.getX() >= scrollPane.getWidth() - BORDER_THICKNESS) {
+                        setCursor(new Cursor(Cursor.E_RESIZE_CURSOR));
+                    } else {
+                        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    }
+                }
+
+                public void mouseDragged(MouseEvent e) {
+                    if (sres) {
+                        double swidth = getSize().getWidth();
+                        if (e.getX() < swidth / 3 && e.getX() > swidth / 5) {
+                            sval = swidth / e.getX();
+                            dispatchEvent(new ComponentEvent(frame, ComponentEvent.COMPONENT_RESIZED));
+                        }
+                    }
+                }
+            });
+
+main.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    super.mousePressed(e);
+                    int Ydouble = e.getY();
+                    cres = Ydouble >= main.getHeight() - BORDER_THICKNESS;
+                }
+
+                @Override
+                public void mouseReleased(MouseEvent e) {
+                    super.mouseReleased(e);
+                    cres = false;
+                }
+            });
+
+main.addMouseMotionListener(new MouseAdapter() {
+                public void mouseMoved(MouseEvent e) {
+                    int Ydouble = e.getY();
+                    if (Ydouble >= main.getHeight() - BORDER_THICKNESS) {
+                        setCursor(new Cursor(Cursor.N_RESIZE_CURSOR));
+                    } else {
+                        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+                    }
+                }
+
+                public void mouseDragged(MouseEvent e) {
+                    if (cres) {
+                        double cheight = getSize().getHeight();
+                        int Ydouble = e.getY() + top.getHeight();
+                        if (Ydouble > cheight - (cheight / 4) &&
+                                Ydouble < cheight - (cheight / 7)) {
+                            cval = cheight / (cheight - (Ydouble));
+                            dispatchEvent(new ComponentEvent(frame, ComponentEvent.COMPONENT_RESIZED));
+                        }
+                    }
+                }
+            });
+
+generate a fancy webpage in a java program with a login system linked with a mysql base that you have to provide the code. Create the page with different sections "movies", "cloud", "chat". In movies create a system where i can upload videos and see other peoples videos, in cloud create a personal space where i can upload any file and in chat create a global chat where i can chat with anyother users in the web
+
+Give me EVERY FILE that i need and the project structure that i have to follow
